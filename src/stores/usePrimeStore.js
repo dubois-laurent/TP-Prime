@@ -13,9 +13,10 @@ export const usePrimeStore = create((set, get) => ({
 
     checkPrime: () => {
         const { number } = get()
-
         if (number === null) return
+        console.log("Vérification du nombre :", number);
+        const isPrime = verifIsPrime(number)
 
-        set({ isPrime: verifIsPrime(number) })
+        set({ isPrime: isPrime })
     },
 }));

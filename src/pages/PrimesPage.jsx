@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Prime } from '../components/Prime'
 
 function PrimesPage() {
 
@@ -10,6 +11,7 @@ function PrimesPage() {
         <div className="flex gap-3 flex-wrap">
           <QueryClientProvider client={queryClient}>
             {/* Composant sur les nombres premiers */}
+            <Prime />
           </QueryClientProvider>
         </div>
       </main>

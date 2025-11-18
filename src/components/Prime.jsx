@@ -31,11 +31,45 @@ export function Prime() {
 
   return (
     <div>
-      <h2>Génère un nombre aléatoire et vérifie s'il est premier !</h2>
-      <Button handleClick={handleClick}>Générer un nombre aléatoire</Button>
-      <Button handleClick={checkPrime}>Vérifier si c'est un nombre premier</Button>
-      {isPrime === false && <p>Le nombre {number} n'est pas un nombre premier.</p>}
-        {isPrime === true && <p>Le nombre {number} est un nombre premier !</p>}
+
+      <div>
+        <h2>Génère un nombre aléatoire et vérifie s'il est premier !</h2>
+      </div> 
+
+      <div>
+        {number !== null && (
+          <div className="bg-neutral-800/50 backdrop-blur-sm rounded-2xl p-8 mb-6 border border-neutral-700 text-center">
+            <p className="text-neutral-400 mb-2 text-sm uppercase tracking-wide">Nombre actuel</p>
+            <div className="text-7xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-4">
+              {number}
+            </div>
+            {isPrime !== null && (
+              <div className={`inline-block px-6 py-2 rounded-full font-semibold ${
+                isPrime 
+                  ? 'bg-green-500/20 text-green-400 border border-green-500/50' 
+                  : 'bg-red-500/20 text-red-400 border border-red-500/50'
+              }`}>
+                {isPrime ? '✓ Nombre Premier' : '✗ Pas Premier'}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            <Button 
+              handleClick={handleClick} 
+            >
+              🎲 Générer un nombre
+            </Button>
+            <Button 
+              handleClick={checkPrime} 
+              disabled={number === null}
+            >
+              🔍 Vérifier
+            </Button>
+      </div>
+
     </div>
   );
 }

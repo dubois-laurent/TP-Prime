@@ -1,6 +1,5 @@
 import { Button } from "./ui/buttonGenerator";
 import { usePrimeAlea } from "../hooks/usePrimeAlea";
-import { useState } from 'react'
 import { usePrimeStore } from "../stores/usePrimeStore";
 
 export function Prime() {

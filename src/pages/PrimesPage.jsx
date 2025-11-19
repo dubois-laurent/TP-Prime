@@ -3,6 +3,8 @@ import { Prime } from '../components/Prime'
 
 function PrimesPage() {
 
+
+  // Création d'une instance de QueryClient pour gérer le cache et les requêtes
   const queryClient = new QueryClient();
   
   return (
@@ -10,7 +12,6 @@ function PrimesPage() {
       <main className="min-h-screen w-full bg-neutral-900 text-neutral-200 flex items-start justify-center p-10">
         <div className="flex gap-3 flex-wrap">
           <QueryClientProvider client={queryClient}>
-            {/* Composant sur les nombres premiers */}
             <Prime />
           </QueryClientProvider>
         </div>

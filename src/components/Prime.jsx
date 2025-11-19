@@ -2,30 +2,42 @@ import { Button } from "./ui/buttonGenerator";
 import { usePrimeAlea } from "../hooks/usePrimeAlea";
 import { usePrimeStore } from "../stores/usePrimeStore";
 
+// Composant principal pour générer un nombre aléatoire et vérifier s'il est premier
 export function Prime() {
     
-    const {data, isLoading, error, refetch} = usePrimeAlea()
+    const {data, isLoading, error, refetch} = usePrimeAlea() // Hook pour récupérer un nombre aléatoire
 
-    const { checkPrime, isPrime, number } = usePrimeStore((s) => s)
+    const { checkPrime, isPrime, number, addToHistoric, setNumber } = usePrimeStore((s) => s) // Récupère les fonctions et états du store zustand
 
+    // Affiche un message de chargement ou d'erreur si nécessaire
     if (isLoading) {
         return (
             <div>Chargement ...</div>
         )
     }
 
+    // Gestion des erreurs
     if (error) {
         return (
             <div>ERREUR</div>
         )
     }
 
+
+  // Gestion du clic pour générer un nouveau nombre aléatoire via l'API et le définir dans le store
   async function handleClick() {
     const { data: newData } = await refetch()
     if (newData) {
-        usePrimeStore.getState().setNumber(newData.number)
+        setNumber(newData.number)
       console.log(newData.number);
     }
+  }
+
+
+  // Gestion du clic pour vérifier si le nombre actuel est premier et l'ajouter à l'historique
+  async function handleCheckPrime() {
+    checkPrime()
+    addToHistoric(number, isPrime)
   }
 
   return (
@@ -62,8 +74,7 @@ export function Prime() {
               🎲 Générer un nombre
             </Button>
             <Button 
-              handleClick={checkPrime} 
-              disabled={number === null}
+              handleClick={handleCheckPrime} 
             >
               🔍 Vérifier
             </Button>

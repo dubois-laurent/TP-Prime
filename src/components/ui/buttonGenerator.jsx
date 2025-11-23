@@ -1,5 +1,5 @@
 
-export function Button({handleClick, children, disabled}) {
+export function Button({handleClick, children}) {
 
     return (
         <button 

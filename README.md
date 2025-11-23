@@ -1,14 +1,21 @@
-TP Prime — generateur de nombres premiers
+Prime — generateur de nombres premiers
 =========================================
 
-Exercice pratique realise par Camille et Laurent pour explorer un flux React moderne autour de la generation et de la validation de nombres premiers. Le projet combine TanStack Router/Query, Zustand et Zod afin d illustrer une separation claire des responsabilites entre navigation, requetes asynchrones, logique metier et validation.
+Exercice pratique realisé pour explorer un flux React moderne autour de la generation et de la validation de nombres premiers. Le projet combine TanStack Router/Query, Zustand et Zod afin d'illustrer une separation claire des responsabilites entre navigation, requetes asynchrones, logique metier et validation.
 
 Fonctionnalites clefs
 ---------------------
 - bouton pour generer un nouveau nombre (React Query + cache automatique)
-- controle de validite (schema `numberSchema`) et affichage convivial de l etat (chargement, succes, erreur)
+- input manuel controle avec validation immediate via `formInputSchema` (Zod) et messages d erreur visibles sous le champ
+- affichage en temps reel du nombre courant dans la tuile centrale, qu il provienne du random ou d une saisie
 - verification immediate de la primalite via le store Zustand et un cache local de nombres premiers
 - navigation TanStack Router avec layout racine, liens actifs et Devtools integres
+
+Flux utilisateur
+----------------
+1. Generer un nombre (ou le saisir) met a jour le store `usePrimeStore` et synchronise la valeur affichee.
+2. Les contraintes (1 a 100) sont valides par Zod et affichent des messages contextuels sans bloquer l UI.
+3. Le bouton unique "Verifier le nombre" relance la verification, quel que soit l origine de la valeur, et le store conserve le resultat pour l UI.
 
 Stack technique
 ---------------
@@ -24,7 +31,7 @@ Arborescence en bref
 ```
 src/
 	apis/        # fetchNumberAlea (API simulee + validation Zod)
-	components/  # Prime + UI Button
+	components/  # Prime + UI Button + formulaires controles
 	hooks/       # usePrimeAlea (TanStack Query)
 	pages/       # HomePage et PrimesPage
 	routes/      # Router file-based TanStack

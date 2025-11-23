@@ -14,8 +14,8 @@ function PrimesPage() {
         <div className="flex gap-3 flex-wrap items-center justify-center">
           <QueryClientProvider client={queryClient}>
             <Prime />
-            <History />
           </QueryClientProvider>
+            <History />
         </div>
       </main>
     </>

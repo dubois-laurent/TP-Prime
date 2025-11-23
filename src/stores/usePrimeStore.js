@@ -44,23 +44,3 @@ export const usePrimeStore = create((set, get) => ({
     clearHistory: () => set({ history: [] }), //effacer l'historique
 }));
 
-
-    /*au lieu de 
-
-        set({ isPrime: isPrime })
-    },
-
-    
-    // Historique des nombres testés
-    addToHistoric: (n, isPrime) => {
-
-        const { historic } = get()
-
-        const newTestedNumber = { number: n, isPrime: isPrime }
-
-        set({ historic: [...historic, newTestedNumber] })
-    },
-
-}));
-*/
-

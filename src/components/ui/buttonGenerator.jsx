@@ -1,4 +1,4 @@
-export function Button({handleClick, children, disabled, className = ""}) {
+ export function MainCTA({handleClick, children, disabled, className = ""}) {
     return (
         <button 
             onClick={handleClick}
@@ -9,3 +9,4 @@ export function Button({handleClick, children, disabled, className = ""}) {
         </button>
     );
 }
+

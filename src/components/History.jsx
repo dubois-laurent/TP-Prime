@@ -1,4 +1,5 @@
 import { usePrimeStore } from "../stores/usePrimeStore";
+import { MainCTA } from "./ui/buttonGenerator";
 
 export function History() {
     //stocke le tableau localement dans le composant
@@ -17,12 +18,12 @@ export function History() {
                     <h3 className="text-xl font-bold text-white">
                         📊 Historique des vérifications
                     </h3>
-                    <button
-                        onClick={clearHistory} //appelle la fonction du store et vide le tableau history
+                    <MainCTA
+                        handleClick={clearHistory}
                         className="text-sm text-neutral-400 hover:text-red-400 transition-colors"
                     >
                         🗑️ Effacer
-                    </button>
+                    </MainCTA>
                 </div>
                 
                 {/*boucle sur chaque élément du tableau*/}

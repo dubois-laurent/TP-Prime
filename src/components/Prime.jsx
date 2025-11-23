@@ -1,9 +1,8 @@
-import { Button } from "./ui/buttonGenerator";
+import { MainCTA } from "./ui/buttonGenerator";
 import { usePrimeAlea } from "../hooks/usePrimeAlea";
 import { usePrimeStore } from "../stores/usePrimeStore";
 import { formInputSchema } from "../schemas/formSchema";
 import { useState } from "react";
-import { History } from "./History";
 
 // Composant principal pour générer un nombre aléatoire et vérifier s'il est premier
 export function Prime() {
@@ -116,30 +115,26 @@ export function Prime() {
       </div>
 
       {/* Bouton générer */}
-        <Button 
+        <MainCTA 
         handleClick={handleGenerateRandom}
         className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-indigo-500 disabled:hover:to-purple-600 transform hover:scale-105 active:scale-95"
         >
           🎲 Générer un nombre
-        </Button>
+        </MainCTA>
 
     </div>
     </div>
 
       {/* bouton vérifier */}
       <div className="w-full max-w-2xl flex justify-center">
-            <Button 
+            <MainCTA 
             handleClick={handleCheckPrime}
             disabled={number === null}
             className="px-12 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-green-500 disabled:hover:to-emerald-600 transform hover:scale-105 active:scale-95"
             >
               🔍 Vérifier le nombre
-            </Button>
+            </MainCTA>
       </div>
-
-      {/* composant pour voir l'historique */}
-      <History />
-
     </div>
   );
 }

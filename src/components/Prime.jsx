@@ -3,13 +3,14 @@ import { usePrimeAlea } from "../hooks/usePrimeAlea";
 import { usePrimeStore } from "../stores/usePrimeStore";
 import { formInputSchema } from "../schemas/formSchema";
 import { useState } from "react";
+import { History } from "./History";
 
 // Composant principal pour générer un nombre aléatoire et vérifier s'il est premier
 export function Prime() {
     
     const {data, isLoading, error, refetch} = usePrimeAlea() // Hook pour récupérer un nombre aléatoire
 
-    const { checkPrime, isPrime, number, addToHistoric, setNumber, historic } = usePrimeStore((s) => s) // Récupère les fonctions et états du store zustand
+    const { checkPrime, isPrime, number, setNumber } = usePrimeStore((s) => s) // Récupère les fonctions et états du store zustand 
 
     const [manualValue, setManualValue] = useState("") // État local pour la valeur saisie manuellement
 
@@ -43,11 +44,8 @@ export function Prime() {
 
 
   // Gestion du clic pour vérifier si le nombre actuel est premier et l'ajouter à l'historique
-  async function handleCheckPrime() {
-    const result = checkPrime()
-
-    // Ajoute le résultat au tableau historique, obligé d'utiliser typeof pour gérer le cas où result est null (ça arrivera jamais)
-    addToHistoric(number, typeof result === "boolean" ? result : isPrime)
+  function handleCheckPrime() {
+    checkPrime() // L'historique est maintenant géré automatiquement dans checkPrime()
   }
 
   // Gestion de la saisie manuelle et mise à jour en temps réel
@@ -139,7 +137,8 @@ export function Prime() {
             </Button>
       </div>
 
-      
+      {/* composant pour voir l'historique */}
+      <History />
 
     </div>
   );

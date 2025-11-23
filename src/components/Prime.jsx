@@ -78,15 +78,16 @@ export function Prime() {
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4">
+    <div className="flex flex-col items-center justify-center p-4">
 
       <div className="text-center mb-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-          Génère un nombre aléatoire et vérifie s'il est premier !
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+          Inscris ou génère un nombre aléatoire et vérifie s'il est premier !
         </h2>
       </div> 
 
-      <div>
+      {/* Affichage du nombre et résultat */}
+      <div className="w-full max-w-2xl">
           <div className="bg-neutral-800/50 backdrop-blur-sm rounded-2xl p-8 mb-6 border border-neutral-700 text-center">
             <p className="text-neutral-400 mb-2 text-sm uppercase tracking-wide">Nombre à tester</p>
             <div className="text-7xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-4">
@@ -104,25 +105,41 @@ export function Prime() {
           </div>
       </div>
 
-      <div className="flex flex-col items-center gap-4 mb-6">
-            <Button 
-              handleClick={handleGenerateRandom} 
-            >
-              🎲 Générer un nombre
-            </Button>
-            <Button 
-              handleClick={handleCheckPrime} 
-            >
-              🔍 Vérifier
-            </Button>
-      </div>
-
-      <div>
+      {/* input de saisie et bouton générer */}
+    <div className="w-full max-w-2xl mb-4">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+       
+       {/* Input manuel */}
+        <div>
         <form className="flex items-center mb-6 gap-2 flex flex-col" onSubmit={(event) => event.preventDefault()}>
           <label>Entre un nombre entre 1 et 100 :</label>
           <input name="inputNumber" value={manualValue} onChange={handleManualChange} className="ml-2 p-1 rounded bg-neutral-800 border border-neutral-700"/>
         </form>
       </div>
+
+      {/* Bouton générer */}
+        <Button 
+        handleClick={handleGenerateRandom}
+        className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-indigo-500 disabled:hover:to-purple-600 transform hover:scale-105 active:scale-95"
+        >
+          🎲 Générer un nombre
+        </Button>
+
+    </div>
+    </div>
+
+      {/* bouton vérifier */}
+      <div className="w-full max-w-2xl flex justify-center">
+            <Button 
+            handleClick={handleCheckPrime}
+            disabled={number === null}
+            className="px-12 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-green-500 disabled:hover:to-emerald-600 transform hover:scale-105 active:scale-95"
+            >
+              🔍 Vérifier le nombre
+            </Button>
+      </div>
+
+      
 
     </div>
   );

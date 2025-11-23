@@ -139,7 +139,7 @@ export function Prime() {
       <div className="w-full max-w-2xl flex justify-center">
         <MainCTA
           handleClick={handleCheckPrime}
-          disabled={number === null}
+          disabled={number === null || errorSchema !== ""}
           className="px-12 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:from-green-500 disabled:hover:to-emerald-600 transform hover:scale-105 active:scale-95"
         >
           🔍 Vérifier le nombre
